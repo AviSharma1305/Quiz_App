@@ -1,4 +1,4 @@
-# quizeer
+# The Quiz Master
 
 A new Flutter project.
 
