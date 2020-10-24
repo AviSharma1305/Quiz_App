@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizeer/constants.dart';
 import 'package:quizeer/quizpage.dart';
 
 void main() {
@@ -11,21 +12,22 @@ class Quizeer extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.pink[100],
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          centerTitle: true,
           title: Text(
             "The Quiz Master",
             style: TextStyle(
               fontSize: 24,
             ),
           ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: kGradient,
+            ),
+          ),
         ),
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
-          ),
         ),
       ),
     );

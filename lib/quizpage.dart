@@ -50,170 +50,207 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                child: SizedBox(
-                  height: 50,
-                  width: 150,
-                ),
-              ),
-              Container(
-                height: 50,
-                width: 160,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  color: pColr,
-                ),
-                child: Center(
-                  child: Text(
-                    "SCORE: $totalCorrect",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: txtColr,
-                      fontSize: 22,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    child: SizedBox(
+                      height: 50,
+                      width: 150,
                     ),
                   ),
-                ),
+                  Container(
+                    height: 50,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      color: pColr,
+                      boxShadow: [kShadow],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "SCORE: $totalCorrect",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: txtColr,
+                          fontSize: 22,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Container(
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                color: pColr,
-              ),
-              child: Center(
-                child: Text(
-                  quizLogic.getQuestion(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: txtColr,
-                    fontSize: 35,
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    color: pColr,
+                    boxShadow: [kShadow],
+                  ),
+                  child: Center(
+                    child: Text(
+                      quizLogic.getQuestion(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: txtColr,
+                        fontSize: 35,
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(5.8),
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
-                    ),
-                    textColor: txtColr,
-                    color: trueCard,
-                    child: Text(
-                      "TRUE",
-                      style: TextStyle(
-                        color: txtColr,
-                        fontSize: 35.0,
-                      ),
-                    ),
-                    onPressed: () {
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
                       setState(() {
                         checkAnswer(true);
                       });
                     },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(5.8),
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
-                    ),
-                    textColor: txtColr,
-                    color: falseCard,
-                    child: Text(
-                      "FALSE",
-                      style: TextStyle(
-                        color: txtColr,
-                        fontSize: 35.0,
+                    child: Container(
+                      height: 100,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: trueCard,
+                        boxShadow: [kShadow],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(5.8),
+                        child: Center(
+                          child: Text(
+                            "TRUE",
+                            style: TextStyle(
+                              color: txtColr,
+                              fontSize: 35.0,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    onPressed: () {
+                  ),
+                  GestureDetector(
+                    onTap: () {
                       setState(() {
                         checkAnswer(false);
                       });
                     },
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                height: 50,
-                width: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  color: pColr,
-                ),
-                child: Center(
-                  child: Text(
-                    "$crct",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: txtColr,
+                    child: Container(
+                      height: 100,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: falseCard,
+                        boxShadow: [kShadow],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(5.8),
+                        child: Center(
+                          child: Text(
+                            "FALSE",
+                            style: TextStyle(
+                              color: txtColr,
+                              fontSize: 35.0,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            SizedBox(height: 40),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                "Previous Answer",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: txtColr,
                 ),
               ),
-              Container(
-                height: 50,
-                width: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  color: falseCard,
-                ),
-                child: FlatButton(
-                  child: Text(
-                    "Reset",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: txtColr,
+            ),
+            SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    color: pColr,
+                    boxShadow: [kShadow],
+                  ),
+                  child: Center(
+                    child: Text(
+                      "$crct",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: txtColr,
+                      ),
                     ),
                   ),
-                  onPressed: () {
+                ),
+                GestureDetector(
+                  onTap: () {
                     setState(() {
                       quizLogic.reSet();
                       totalCorrect = 0;
                       totalQuestion = 0;
+                      crct = "VERDICT";
                     });
                   },
+                  child: Container(
+                    height: 50,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: falseCard,
+                      boxShadow: [kShadow],
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.8),
+                      child: Center(
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(
+                            color: txtColr,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              )
-            ],
-          ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
