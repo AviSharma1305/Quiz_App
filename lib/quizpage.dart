@@ -188,7 +188,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 12 ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
